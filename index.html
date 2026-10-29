@@ -20,14 +20,34 @@
 <link rel="apple-touch-icon" href="/exercises/assets/icon-180.png">
 <link rel="preconnect" href="https://script.google.com">
 <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
-<link rel="stylesheet" href="/exercises/assets/style.css?v=3">
+<link rel="stylesheet" href="/exercises/assets/style.css?v=4">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <script>self.ModelViewerElement = { meshoptDecoderLocation: '/exercises/assets/meshopt_decoder.js' };</script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+<script>(function () {
+  var d = document.documentElement, gpu = false;
+  try {
+    var gl = document.createElement('canvas').getContext('webgl', { failIfMajorPerformanceCaveat: true });
+    if (gl) {
+      var info = gl.getExtension('WEBGL_debug_renderer_info');
+      gpu = !/swiftshader|llvmpipe|softpipe|software/i.test(info ? gl.getParameter(info.UNMASKED_RENDERER_WEBGL) : '');
+      var lose = gl.getExtension('WEBGL_lose_context');
+      if (lose) lose.loseContext();
+    }
+  } catch (err) {}
+  self.musq3d = function () {
+    if (d.classList.contains('gpu')) return;
+    d.classList.add('gpu');
+    var s = document.createElement('script');
+    s.type = 'module';
+    s.src = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js';
+    document.head.appendChild(s);
+  };
+  if (gpu) self.musq3d();
+})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "3D Exercise Guide", "description": "Free 3D form guides for 20 key chest, leg and back exercises: watch each lift from any angle, see the muscles it works and avoid the common mistakes. From MUSQ, coming soon to iPhone.", "url": "https://musq.app/", "publisher": {"@type": "Organization", "name": "MUSQ"}, "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://musq.app/exercises/barbell-bench-press/", "name": "Barbell Bench Press"}, {"@type": "ListItem", "position": 2, "url": "https://musq.app/exercises/incline-dumbbell-press/", "name": "Incline Dumbbell Press"}, {"@type": "ListItem", "position": 3, "url": "https://musq.app/exercises/dumbbell-bench-press/", "name": "Dumbbell Bench Press"}, {"@type": "ListItem", "position": 4, "url": "https://musq.app/exercises/push-up/", "name": "Push-Up"}, {"@type": "ListItem", "position": 5, "url": "https://musq.app/exercises/cable-fly/", "name": "Cable Fly"}, {"@type": "ListItem", "position": 6, "url": "https://musq.app/exercises/back-squat/", "name": "Back Squat"}, {"@type": "ListItem", "position": 7, "url": "https://musq.app/exercises/deadlift/", "name": "Deadlift"}, {"@type": "ListItem", "position": 8, "url": "https://musq.app/exercises/romanian-deadlift/", "name": "Romanian Deadlift"}, {"@type": "ListItem", "position": 9, "url": "https://musq.app/exercises/leg-press/", "name": "Leg Press"}, {"@type": "ListItem", "position": 10, "url": "https://musq.app/exercises/barbell-hip-thrust/", "name": "Barbell Hip Thrust"}, {"@type": "ListItem", "position": 11, "url": "https://musq.app/exercises/bulgarian-split-squat/", "name": "Bulgarian Split Squat"}, {"@type": "ListItem", "position": 12, "url": "https://musq.app/exercises/goblet-squat/", "name": "Goblet Squat"}, {"@type": "ListItem", "position": 13, "url": "https://musq.app/exercises/walking-lunge/", "name": "Walking Lunge"}, {"@type": "ListItem", "position": 14, "url": "https://musq.app/exercises/leg-extension/", "name": "Leg Extension"}, {"@type": "ListItem", "position": 15, "url": "https://musq.app/exercises/lying-leg-curl/", "name": "Lying Leg Curl"}, {"@type": "ListItem", "position": 16, "url": "https://musq.app/exercises/pull-up/", "name": "Pull-Up"}, {"@type": "ListItem", "position": 17, "url": "https://musq.app/exercises/lat-pulldown/", "name": "Lat Pulldown"}, {"@type": "ListItem", "position": 18, "url": "https://musq.app/exercises/barbell-bent-over-row/", "name": "Barbell Bent-Over Row"}, {"@type": "ListItem", "position": 19, "url": "https://musq.app/exercises/dumbbell-row/", "name": "Dumbbell Row"}, {"@type": "ListItem", "position": 20, "url": "https://musq.app/exercises/seated-cable-row/", "name": "Seated Cable Row"}]}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoObject", "name": "MUSQ app: Form cues pinned to the lifter", "description": "Screen recording of the MUSQ app: the Low-to-High Cable Fly trainer turned to the side and back with its form cues following the lifter, then a cue card and its common mistake in yellow.", "thumbnailUrl": ["https://musq.app/exercises/assets/musq-app-cues-low-to-high-cable-fly.webp"], "contentUrl": "https://musq.app/exercises/assets/musq-app-cues-low-to-high-cable-fly.mp4", "uploadDate": "2026-10-29", "duration": "PT24S"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoObject", "name": "MUSQ app: X-ray set-up demos", "description": "Screen recording of the MUSQ app: the shoulder blades x-ray demo for the bench press.", "thumbnailUrl": ["https://musq.app/exercises/assets/musq-app-xray-shoulder-blades.webp"], "contentUrl": "https://musq.app/exercises/assets/musq-app-xray-shoulder-blades.mp4", "uploadDate": "2026-10-29", "duration": "PT16S"}</script>
-<script defer src="/exercises/assets/app.js?v=3"></script>
+<script defer src="/exercises/assets/app.js?v=4"></script>
 </head>
 <body>
 <header class="site-head"><div class="wrap">
@@ -45,6 +65,7 @@
     </div>
     <div><div class="viewer">
   <model-viewer src="/exercises/barbell-bench-press/musq-barbell-bench-press.glb" poster="/exercises/barbell-bench-press/poster.webp" alt="3D model of the barbell bench press with the worked muscles highlighted in orange" camera-controls touch-action="pan-y" disable-zoom autoplay camera-orbit="57deg 75deg auto" max-camera-orbit="auto 98deg auto" interaction-prompt="none" shadow-intensity="1" shadow-softness="0.9" exposure="1.05" environment-image="neutral" tone-mapping="neutral" loading="eager"></model-viewer>
+  <div class="flat"><img src="/exercises/barbell-bench-press/poster.webp" alt="3D model of the barbell bench press with the worked muscles highlighted in orange" width="960" height="960"><button class="ctl" type="button" data-act="3d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 20 7v10l-8 4.2L4 17V7z"/><path d="M4 7l8 4.2L20 7M12 11.2V21"/></svg>View in 3D</button></div>
   <span class="chip">3D · drag to turn</span>
   <span class="wordmark mark" aria-hidden="true"></span>
   <div class="ctls">

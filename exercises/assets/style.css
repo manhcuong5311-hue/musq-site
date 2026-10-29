@@ -139,6 +139,15 @@ p { margin: 0; }
   animation: load 1.1s linear infinite;
 }
 .viewer.ready .loading { display: none; }
+/* Without a graphics chip (no .gpu on <html>, see gpu_gate in build_site.py) the poster stands in for the viewer. */
+.viewer .flat { position: absolute; inset: 0; z-index: 1; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 14px; }
+.viewer .flat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.viewer .flat .ctl { position: relative; }
+.gpu .viewer .flat,
+html:not(.gpu) .viewer model-viewer,
+html:not(.gpu) .viewer .chip,
+html:not(.gpu) .viewer .ctls,
+html:not(.gpu) .viewer .loading { display: none; }
 @keyframes load { from { background-position: -40% 0; } to { background-position: 140% 0; } }
 .viewer-note { margin-top: 12px; font-size: 13px; color: var(--muted); text-align: center; }
 

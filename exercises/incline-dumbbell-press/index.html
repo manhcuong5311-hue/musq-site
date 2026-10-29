@@ -20,14 +20,34 @@
 <link rel="apple-touch-icon" href="/exercises/assets/icon-180.png">
 <link rel="preconnect" href="https://script.google.com">
 <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
-<link rel="stylesheet" href="/exercises/assets/style.css?v=3">
+<link rel="stylesheet" href="/exercises/assets/style.css?v=4">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <script>self.ModelViewerElement = { meshoptDecoderLocation: '/exercises/assets/meshopt_decoder.js' };</script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+<script>(function () {
+  var d = document.documentElement, gpu = false;
+  try {
+    var gl = document.createElement('canvas').getContext('webgl', { failIfMajorPerformanceCaveat: true });
+    if (gl) {
+      var info = gl.getExtension('WEBGL_debug_renderer_info');
+      gpu = !/swiftshader|llvmpipe|softpipe|software/i.test(info ? gl.getParameter(info.UNMASKED_RENDERER_WEBGL) : '');
+      var lose = gl.getExtension('WEBGL_lose_context');
+      if (lose) lose.loseContext();
+    }
+  } catch (err) {}
+  self.musq3d = function () {
+    if (d.classList.contains('gpu')) return;
+    d.classList.add('gpu');
+    var s = document.createElement('script');
+    s.type = 'module';
+    s.src = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js';
+    document.head.appendChild(s);
+  };
+  if (gpu) self.musq3d();
+})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "3D Exercise Guide", "item": "https://musq.app/"}, {"@type": "ListItem", "position": 2, "name": "Chest exercises", "item": "https://musq.app/#chest"}, {"@type": "ListItem", "position": 3, "name": "Incline Dumbbell Press", "item": "https://musq.app/exercises/incline-dumbbell-press/"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to do the incline dumbbell press", "description": "How to do the incline dumbbell press for upper-chest growth: bench angle, elbow path and common mistakes, with the movement shown in 3D.", "image": ["https://musq.app/exercises/incline-dumbbell-press/og.jpg"], "datePublished": "2026-10-22", "dateModified": "2026-10-29", "author": {"@type": "Organization", "name": "MUSQ", "url": "https://musq.app/"}, "publisher": {"@type": "Organization", "name": "MUSQ", "logo": {"@type": "ImageObject", "url": "https://musq.app/exercises/assets/icon-512.png"}}, "mainEntityOfPage": "https://musq.app/exercises/incline-dumbbell-press/"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What angle is best for the incline dumbbell press?", "acceptedAnswer": {"@type": "Answer", "text": "Around 30° suits most lifters. Much steeper than 45° and the press turns into more of a shoulder exercise."}}, {"@type": "Question", "name": "Does the incline press build the upper chest?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The incline puts the upper fibres of the chest in a stronger line of pull, so they do more of the work than on a flat bench."}}, {"@type": "Question", "name": "Incline dumbbell or barbell press?", "acceptedAnswer": {"@type": "Answer", "text": "Dumbbells allow a deeper stretch and make each side do its share; a barbell lets you lift heavier. Both build the upper chest."}}]}</script>
-<script defer src="/exercises/assets/app.js?v=3"></script>
+<script defer src="/exercises/assets/app.js?v=4"></script>
 </head>
 <body>
 <header class="site-head"><div class="wrap">
@@ -40,6 +60,7 @@
     <div class="ex-stage">
       <div class="viewer">
   <model-viewer src="/exercises/incline-dumbbell-press/musq-incline-dumbbell-press.glb" poster="/exercises/incline-dumbbell-press/poster.webp" alt="3D model of the incline dumbbell press with the worked muscles highlighted in orange" camera-controls touch-action="pan-y" disable-zoom autoplay camera-orbit="57deg 75deg auto" max-camera-orbit="auto 98deg auto" interaction-prompt="none" shadow-intensity="1" shadow-softness="0.9" exposure="1.05" environment-image="neutral" tone-mapping="neutral" loading="eager"></model-viewer>
+  <div class="flat"><img src="/exercises/incline-dumbbell-press/poster.webp" alt="3D model of the incline dumbbell press with the worked muscles highlighted in orange" width="960" height="960"><button class="ctl" type="button" data-act="3d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 20 7v10l-8 4.2L4 17V7z"/><path d="M4 7l8 4.2L20 7M12 11.2V21"/></svg>View in 3D</button></div>
   <span class="chip">3D · drag to turn</span>
   <span class="wordmark mark" aria-hidden="true"></span>
   <div class="ctls">

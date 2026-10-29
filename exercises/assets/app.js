@@ -104,6 +104,8 @@
         mv.cameraOrbit = orbit;
         mv.cameraTarget = 'auto auto auto';
         mv.fieldOfView = 'auto';
+      } else if (act === '3d' && self.musq3d) {
+        self.musq3d();  // no graphics chip found: load the viewer only on request
       }
     }));
   });
