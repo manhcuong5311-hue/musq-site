@@ -28,3 +28,16 @@ th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom
 th { font-weight: 600; }
 .table-wrap { overflow-x: auto; }
 footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+
+/* Social links in each network's colours (as on the guide pages). */
+.page-social { margin-left: auto; display: inline-flex; gap: 8px; }
+.page-social a { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: #fff; text-decoration: none; transition: transform .15s, filter .15s; }
+.page-social a:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.page-social svg { width: 15px; height: 15px; }
+.page-social .s-youtube { background: #ff0000; }
+.page-social .s-tiktok { background: #000; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); }
+.page-social .s-tiktok svg { filter: drop-shadow(-1px -1px 0 #25f4ee) drop-shadow(1px 1px 0 #fe2c55); }
+.page-social .s-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+.page-social .s-facebook { background: #1877f2; }
+nav:has(.page-social) { display: flex; flex-wrap: wrap; align-items: center; row-gap: 14px; }
+.page-social a { margin-right: 0; }
