@@ -361,6 +361,12 @@ html:not(.gpu) .viewer .loading { display: none; }
 .site-foot nav { display: flex; flex-wrap: wrap; gap: 18px; }
 .site-foot a { color: var(--text-2); text-decoration: none; }
 .site-foot a:hover { color: var(--text); }
+.foot-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.social { display: flex; align-items: center; gap: 10px; }
+.social span { margin-right: 4px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.site-foot .social a { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--surface); color: var(--text-2); transition: color .15s, border-color .15s, background .15s, transform .15s; }
+.site-foot .social a:hover { color: #fff; border-color: var(--act); background: var(--act); transform: translateY(-2px); }
+.social svg { width: 18px; height: 18px; }
 
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
